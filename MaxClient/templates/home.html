@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Max Interface</title>
+
+    <style>
+        body {
+            margin-top: 100px;
+            background-image: url({{ url_for('static', filename='photos/background.png') }});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 25%;
+            height: auto;
+            display: inline-block;
+            position: relative;
+        }
+
+        .name {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            background: white;
+        }
+
+        .container:hover .name {
+            display: block;
+        }
+
+        canvas {
+            width: 80%;
+            left:0;
+            box-sizing: border-box;
+        }
+
+        #mainCanvas {
+
+            display: none;
+            width: 60%;
+            margin-left: 0;
+            padding-top: 2%;
+        }
+
+        #overlay {
+          position: absolute; /* Sit on top of the page content */
+          width: 60%; /* Full width (cover the whole page) */
+          bottom: 53%;
+          left:0;
+        }
+
+        .service {
+          position: absolute; /* Sit on top of the page content */
+          width: 35%; /* Full width (cover the whole page) */
+          height:42%;
+          top: 20%;
+          right:3%;
+          border: 0px white solid;
+        }
+
+        #welcome {
+          position: absolute; /* Sit on top of the page content */
+          width: 45%; /* Full width (cover the whole page) */
+          top: 20%;
+          right:0;
+          border: 0px white solid;
+        }
+
+        #menu {
+          position: absolute; /* Sit on top of the page content */
+          width: 60%; /* Full width (cover the whole page) */
+          top:0;
+          left:0;
+          margin: auto;
+        }
+
+        #dialogue {
+          position: absolute; /* Sit on top of the page content */
+          width: 60%; /* Full width (cover the whole page) */
+          bottom:0;
+          left:0;
+        }
+
+        #robot_status {
+          position: absolute; /* Sit on top of the page content */
+          width: 35%; /* Full width (cover the whole page) */
+          bottom:0;
+          right:3%;
+          text-align: right;
+        }
+
+        #timeandday {
+          position: absolute; /* Sit on top of the page content */
+          width: 20%; /* Full width (cover the whole page) */
+          top:0;
+          right:0;
+        }
+
+        #Max {
+          position: absolute; /* Sit on top of the page content */
+          width: 50%; /* Full width (cover the whole page) */
+          border: 0px white solid;
+          bottom:0;
+          left:1%;
+          text-align: left;
+          font-family: MyWebFont;
+        }
+        @font-face {
+            font-family: 'MyWebFont';
+            src: url({{ url_for('static', filename='css/nasalization-rg.ttf') }});
+        }
+        #User {
+          position: absolute; /* Sit on top of the page content */
+          width: 50%; /* Full width (cover the whole page) */
+          left:1%;
+          bottom:15%;
+          border: 0px white solid;
+          text-align: left;
+          font-family: MyWebFont;
+        }
+
+        #Franka_internet {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:15%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #Franka_sys {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:10%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #Franka_task {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:1%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+
+        #mir_internet {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:15%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #mir_sys {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:10%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #mir_task {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:1%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+
+        #swarm_internet {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:15%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #swarm_sys {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:10%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+        #swarm_task {
+          position: absolute; /* Sit on top of the page content */
+          width: 34%; /* Full width (cover the whole page) */
+          bottom:1%;
+          right:3%;
+          text-align: left;
+          border: 0px;
+        }
+
+        /*#user {*/
+        /*  position: absolute; !* Sit on top of the page content *!*/
+        /*  width: 90%; !* Full width (cover the whole page) *!*/
+        /*  high: 5%;*/
+        /*  bottom: 40%;*/
+        /*  left:5%;*/
+        /*    border: 1px white solid;*/
+        /*}*/
+
+        .show {
+            display: block !important;
+        }
+    </style>
+
+</head>
+
+<body onload="myFunction()">
+    <label></label>
+    <select id="visuals" hidden="hidden"></select>
+    <canvas id="mainCanvas"></canvas>
+    <img src="{{url_for ('static',filename='photos/menu.png')}}" id="menu">
+    <img src="{{url_for ('static',filename='photos/dialogue.png')}}" id="dialogue">
+    <img src="{{url_for ('static',filename='photos/welcome.png')}}" id="welcome">
+    <img src="{{url_for ('static',filename='photos/Mir_S.png')}}" id="mir_S" class="service" hidden="hidden">
+    <img src="{{url_for ('static',filename='photos/Franka_S.png')}}" id="franka_S" class="service" hidden="hidden">
+    <img src="{{url_for ('static',filename='photos/swarm_S.png')}}" id="swarm_S" class="service" hidden="hidden">
+    <img src="{{url_for ('static',filename='photos/robot_status.png')}}" id="robot_status" style="visibility: hidden">
+    <h1 class="typingFrankainternet" style="color: azure; font-size:large; font-family:MyWebFont" id="Franka_internet" ></h1>
+    <h1 class="typingFrankasys" style="color: azure; font-size:large; font-family:MyWebFont" id="Franka_sys"></h1>
+    <h1 class="typingFranktask" style="color: azure; font-size:large; font-family:MyWebFont" id="Franka_task"></h1>
+    <h1 class="typingmirinternet" style="color: azure; font-size:large; font-family:MyWebFont" id="mir_internet" ></h1>
+    <h1 class="typingmirsys" style="color: azure; font-size:large; font-family:MyWebFont" id="mir_sys"></h1>
+    <h1 class="typingmirtask" style="color: azure; font-size:large; font-family:MyWebFont" id="mir_task"></h1>
+    <h1 class="typingswarminternet" style="color: azure; font-size:large; font-family:MyWebFont" id="swarm_internet" ></h1>
+    <h1 class="typingswarmsys" style="color: azure; font-size:large; font-family:MyWebFont" id="swarm_sys"></h1>
+    <h1 class="typingswarmtask" style="color: azure; font-size:large; font-family:MyWebFont" id="swarm_task"></h1>
+
+    <div id = "timeandday">
+
+    </div>
+    <h1 style="color: azure; text-align: center; font-size: xxx-large; font-family: MyWebFont" id="overlay">Max</h1>
+    <h1 class="typingMax" style="color: limegreen; font-size:large" id="Max"></h1>
+    <h1 class="typingUser" style="color: azure; font-size:large" id="User"></h1>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for ('static',filename='js/dist/bundle.iife.js')}}"></script>
+    <script type="text/javascript" src="{{url_for ('static',filename='js/loadeffect.js')}}"></script>
+    <script src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
+
+</body>
+
+</html>

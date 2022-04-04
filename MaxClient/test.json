@@ -1,0 +1,2 @@
+{"service":
+  [{"service name": "mir", "skills": ["GREETING", "MISSIONCHECK", "POSITIONCHECK", "BATTERYCHECK", "ASKHELP", "STATESTOP", "STATERUN", "DELIVERY"]}, {"service name": "main", "skills": ["greeting", "who_made_you", "repeat", "how_old_are_you", "tell_joke", "are_you_a_bot", "play_music", "what_are_your_hobbies", "goodbye"]}]}
