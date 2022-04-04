@@ -1,0 +1,15 @@
+{
+  "GREETING": ["All good. Thanks.","Not bad. Thank you.", "Yes, how can I help you?"],
+  "MISSIONCHECK": [
+    {
+      "mirfree": [
+        "Well, I am totally free now.",
+        "Em, nothing on my schedule."
+      ],
+      "mirbusy": [
+        "Well, I am a bit buys right now #",
+        "Yeah, I am working on #"
+      ]
+    }
+  ]
+}

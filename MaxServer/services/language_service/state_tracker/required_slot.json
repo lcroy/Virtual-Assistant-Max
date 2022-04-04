@@ -1,0 +1,41 @@
+{
+  "service": [
+    {
+      "service name": "mir",
+      "intent": [
+        {
+          "POSITIONADD": [
+            {
+              "B-position_add": "yes"
+            },
+            {
+              "I-position_add": "optional"
+            }
+          ]
+        },
+        {
+          "DELIVERY": [
+            {
+              "B-DELIVERY_PERSON": "yes"
+            },
+            {
+              "I-DELIVERY_PERSON": "optional"
+            },
+            {
+              "B-DELIVERY_OBJECT": "yes"
+            },
+            {
+              "B-DELIVERY_OBJECT_COLOR": "yes"
+            },
+            {
+              "B-DELIVERY_OBJECT_SIZE": "yes"
+            },
+            {
+              "B-DELIVERY_POSITION": "yes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
