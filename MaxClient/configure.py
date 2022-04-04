@@ -78,7 +78,7 @@ class Config:
         self.typing_audio_script = os.path.join(self.project_path, 'static/audio/typing_audio.py')
 
         #open ai key===============================
-        self.api_key = ""
+        self.api_key = "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"
 
         # LSTM Approach
         # parameters for LSTM Model
