@@ -1,7 +1,7 @@
 import torch.nn as nn
 from transformers.modeling_bert import BERT_PRETRAINED_MODEL_ARCHIVE_MAP, BertPreTrainedModel, BertModel, BertConfig
 from torchcrf import CRF
-from module import IntentClassifier, SlotClassifier
+from BERT_model.module import IntentClassifier, SlotClassifier
 
 class JointBERT(BertPreTrainedModel):
     config_class = BertConfig

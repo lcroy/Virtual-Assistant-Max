@@ -69,4 +69,4 @@ you may say "Let's have a talk".
 
 **Please check the configure.py file for the list of the trigger words**. The trigger words are 
 only used for activating the service. BERT and LSTM models are used for interpreting the user's utterance. 
-More details will be found on Max Model.   
+More details can be found on Max Model.   
