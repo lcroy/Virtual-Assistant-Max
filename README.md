@@ -7,4 +7,4 @@ Nvidia Jetson Nano. Our research paper is:
 [How can I help you? An Intelligent Virtual Assistant for Industrial Robots](https://dl.acm.org/doi/10.1145/3434074.3447163), 
  Chen Li, Jinha Park, Hahyeon Kim, Dimitrios Chrysostomou. *HRI '21 Companion: Companion of the 2021 ACM/IEEE International Conference on Human-Robot Interaction*
 
-<center><img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/BERT.png" width="400" /></center>
+<img align="center" src="https://github.com/lcroy/Jetson_nano/blob/main/Image/BERT.png" width="400" />
