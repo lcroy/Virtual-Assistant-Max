@@ -1,14 +1,6 @@
 # Industrial virtual assistant implemented on Jetson Nano
 
 ## Introduction
-This repository showcases building industrial oriented virtual assistant via fintuning a pretrained BERT model using Transformer architecture, and contains the dataset, source code and pre-trained model. It is implemented and tested on
-Nvidia Jetson Nano. Our research paper is:
-
-[How can I help you? An Intelligent Virtual Assistant for Industrial Robots](https://dl.acm.org/doi/10.1145/3434074.3447163), 
- Chen Li, Jinha Park, Hahyeon Kim, Dimitrios Chrysostomou. *HRI '21 Companion: Companion of the 2021 ACM/IEEE International Conference on Human-Robot Interaction*
-
-<img style="padding: inherit" src="https://github.com/lcroy/Jetson_nano/blob/main/Image/BERT.png" width="400" />
-
 In the light of recent trends toward introducing Artificial Intelligence (AI) 
 to enhance Human-Robot Interaction (HRI), intelligent virtual assistants (VA) 
 driven by Natural Language Processing (NLP) receives ample attention in the 
@@ -19,6 +11,13 @@ operator. This interaction is achieved using a novel VA, called Max, as an
 intelligent and robust interface. It is ongoing project. It is deployed on the
 [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
 
+This repository showcases building industrial oriented virtual assistant via fintuning a pretrained BERT model using Transformer architecture, and contains the dataset, source code and pre-trained model. It is implemented and tested on
+Nvidia Jetson Nano. Our research paper is:
+
+[How can I help you? An Intelligent Virtual Assistant for Industrial Robots](https://dl.acm.org/doi/10.1145/3434074.3447163), 
+ Chen Li, Jinha Park, Hahyeon Kim, Dimitrios Chrysostomou. *HRI '21 Companion: Companion of the 2021 ACM/IEEE International Conference on Human-Robot Interaction*
+
+
 ## Architecture Overview
 Max is designed as a web-based application based on the [Flask](https://flask.palletsprojects.com/en/2.1.x/) web framework. 
 It involves three main actors: 1) the Max Client, devoted to the translation 
@@ -28,7 +27,19 @@ ground verbal commands to robot’s actions and generate the corresponding
 response; 3) the robotic platform. The following figure shows the overview of 
 the system architecture.
 
-<img style="padding: inherit" src="https://github.com/lcroy/Jetson_nano/blob/main/Image/system_architecture.png" width="800" />
+<img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/system_architecture.png" width="800" />
+
+## Structure of this repository
+###MaxClient
+The MaxClient folder includes the source code of the Max client, description of core 
+components, interface design and the instruction of how to run it. 
+###MaxServer
+The MaxServer folder includes the source code of the Max server, description of provided
+services, and the instruction of how to run it.  
+###MaxModel
+The MaxModel folder includes the source code of models (i.e., BERT and LSTM model), the 
+dataset and the instruction of how to train the models. We also provide the trained BERT model
+for you to test our VA on Jetson Nano. 
 
 ## Installation
 The following steps show how to set up the environment for running Max on Jetson Nano.
@@ -58,7 +69,7 @@ Use the following command to create an virtual environment.
 ```
 conda create -n name_of_environment python=3.6
 ```
-Enter the virtual environment. For example, I create my environment named "tod"
+Activate your virtual environment. For example, the environment created here with the named "tod"
 ```
 conda activate tod
 ```
