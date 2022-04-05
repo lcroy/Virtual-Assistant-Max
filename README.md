@@ -9,7 +9,26 @@ Nvidia Jetson Nano. Our research paper is:
 
 <img style="padding: inherit" src="https://github.com/lcroy/Jetson_nano/blob/main/Image/BERT.png" width="400" />
 
-In the light of recent trends toward introducing Artificial Intelligence (AI) to enhance Human-Robot Interaction (HRI), intelligent virtual assistants (VA) driven by Natural Language Processing (NLP) receives ample attention in the manufacturing domain. However, most VAs either tightly bind with a specific robotic system or lack efficient human-robot communication. In this work, we implement a layer of interaction between the robotic system and the human operator. This interaction is achieved using a novel VA, called Max, as an intelligent and robust interface.
+In the light of recent trends toward introducing Artificial Intelligence (AI) 
+to enhance Human-Robot Interaction (HRI), intelligent virtual assistants (VA) 
+driven by Natural Language Processing (NLP) receives ample attention in the 
+manufacturing domain. However, most VAs either tightly bind with a specific 
+robotic system or lack efficient human-robot communication. In this work, we 
+implement a layer of interaction between the robotic system and the human 
+operator. This interaction is achieved using a novel VA, called Max, as an 
+intelligent and robust interface. It is ongoing project. It is deployed on the
+[Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+
+## Architecture Overview
+Max is designed as a web-based application based on the [Flask](https://flask.palletsprojects.com/en/2.1.x/) web framework. 
+It involves three main actors: 1) the Max Client, devoted to the translation 
+of the operator’s verbal commands, showing the robot’s status, displaying the 
+response, and controlling the shop floor robots; 2) the Max Server, committed to serve the interpretation of the operator’s requests,
+ground verbal commands to robot’s actions and generate the corresponding 
+response; 3) the robotic platform. The following figure shows the overview of 
+the system architecture.
+
+<img style="padding: inherit" src="https://github.com/lcroy/Jetson_nano/blob/main/Image/system_architecture.png" width="800" />
 
 ## Installation
 The following steps show how to set up the environment for running Max on Jetson Nano.
