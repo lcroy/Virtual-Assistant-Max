@@ -1,7 +1,6 @@
 # Max Server
 
-The Max server combines three functionalities, 1) lan-
-guage service, devoted to recognizing the operator’s intent
+The Max server combines three functionalities, 1) language service, devoted to recognizing the operator’s intent
 and the keywords of the utterance, 2) grounding, grounds
 each phrase tuple extracted by language service to a robot
 operation action or entity/relationship, and 3) the response
@@ -30,7 +29,8 @@ training on our dataset, the model achieves 0.977 and 0.968 on intent accuracy a
 - run.py: the main script for running Max Server.
 
 ## Instruction
-You need to open a terminal, activate your pre-defined environment and run the following script. 
+You need to open a terminal, activate your pre-defined environment and run the following script. Please make sure you
+put the model in the folder first.
 ```
 python run.py
 ```

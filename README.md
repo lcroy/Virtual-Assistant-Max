@@ -41,7 +41,7 @@ The MaxModel folder includes the source code of models (i.e., BERT and LSTM mode
 dataset and the instruction of how to train the models. We also provide the trained BERT model
 for you to test our VA on Jetson Nano. 
 
-## Installation
+## Installation on Jetson Nano
 The following steps show how to set up the environment for running Max on Jetson Nano.
 
 ### Step 1: Update system
@@ -130,3 +130,6 @@ pip install geopy
 ```
 
 The requirements.txt includes the packages for running Max on Jetson Nano.
+
+## Disclaimer
+This repository aims to facilitate research in human-robot interaction in industrial Robots based on Nvidia SOTA Jetson Nano.
