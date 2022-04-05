@@ -30,13 +30,13 @@ the system architecture.
 <img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/system_architecture.png" width="800" />
 
 ## Structure of this repository
-###MaxClient
+### MaxClient
 The MaxClient folder includes the source code of the Max client, description of core 
 components, interface design and the instruction of how to run it. 
-###MaxServer
+### MaxServer
 The MaxServer folder includes the source code of the Max server, description of provided
 services, and the instruction of how to run it.  
-###MaxModel
+### MaxModel
 The MaxModel folder includes the source code of models (i.e., BERT and LSTM model), the 
 dataset and the instruction of how to train the models. We also provide the trained BERT model
 for you to test our VA on Jetson Nano. 
