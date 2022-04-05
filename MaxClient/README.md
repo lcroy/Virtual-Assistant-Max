@@ -17,7 +17,7 @@
 - configure.py: It defines the parameters for running the Max Client, e.g., project path, trigger words.
 - Max.py: It defines the main function of the Max Client, e.g., speech to text, text to speech, call MiR service, Call Small talk service.
 - max_interface.py: It defines Max web interface. 
-- update_conversation.py: the user's utterance and max's response will be updated by using this script.
+- update_conversation.py: the user's utterance and max's response will be updated on the web page by using this script.
 - run.py: for running Max Client.
 
 ## Max Client interface
