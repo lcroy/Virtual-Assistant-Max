@@ -37,8 +37,36 @@ Training and Assistance scenarios, where it displays the
 real-time information of the tasks or system, e.g., network
 connection, which task is running.
 
-<img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/Application_Interface.png" width="800" />
+<img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/Application_Interface.png" width="1000" />
 
+## Instruction
+### Run Max web interface
+First, make sure you installed all the packages listed in the homepage of this repository.
+Activate the environment you created. Replacing the "tod" with your environment.
 ```
-pip install geopy
+conda activate tod
 ```
+Second, call the max interface
+```
+python max_interface.py
+```
+### Run Max Client
+You need to open another terminal, activate the environment and call the Max Client. 
+```
+python run.py
+```
+### How to talk to Max
+To invoke the Max service, you need to say the trigger word - "Max", for example
+"Hey, Max". 
+
+To invoke the MiR service, you need to say the trigger word - "mobile robot", for example,
+"Hey Max, please call mobile robot". 
+
+To invoke the LSTM supported chit-chat service, you may ask question, e.g., "Max, how old are you"
+
+To invoke the GPT supported chit-chat service, you need to say the trigger word, for example
+you may say "Let's have a talk". 
+
+**Please check the configure.py file for the list of the trigger words**. The trigger words are 
+only used for activating the service. BERT and LSTM models are used for interpreting the user's utterance. 
+More details will be found on Max Model.   
