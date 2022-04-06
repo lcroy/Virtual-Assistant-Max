@@ -1,6 +1,6 @@
 # Max Model
 
-## Dataset for chit-chat
+## Dataset
 - data/main_intent: includes the dataset and intent labels for chit-chat service. We currently support 10 
   intents, for example, greeting, tell a joke. 
 - data/mir: includes the dataset and intent labels for MiR service. We currently support six intents, mission check, 
