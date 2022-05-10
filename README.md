@@ -1,4 +1,4 @@
-# Industrial virtual assistant implemented on Jetson Nano
+# Industrial virtual assistant
 
 ## Introduction
 In the light of recent trends toward introducing Artificial Intelligence (AI) 
@@ -12,7 +12,7 @@ intelligent and robust interface. It is ongoing project. It is deployed on the
 [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
 
 This repository showcases building industrial oriented virtual assistant via fintuning a pretrained BERT model using Transformer architecture, and contains the dataset, source code and pre-trained model. It is implemented and tested on
-Nvidia Jetson Nano. Our research paper is:
+Nvidia Jetson Nano. Our previous research work can be found:
 
 [How can I help you? An Intelligent Virtual Assistant for Industrial Robots](https://dl.acm.org/doi/10.1145/3434074.3447163), 
  Chen Li, Jinha Park, Hahyeon Kim, Dimitrios Chrysostomou. *HRI '21 Companion: Companion of the 2021 ACM/IEEE International Conference on Human-Robot Interaction*
