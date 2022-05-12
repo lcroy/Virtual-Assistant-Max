@@ -1,0 +1,29 @@
+{
+    "service": {
+        "smart phone": [
+            {"definition":[
+              {"product": "Ok, the Smart Lab Inc. produces customized “smart phones”. The customer can select color of housing and number of placement of fuses. These “smartphones” consist of a top and bottom cover, up to two fuses, two or four holes and a PCB."},
+                {"PCB": "Sure, The green material is a PCB. Here is its definition I found from wiki. The full name a printed circuit board mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate. The one we have for the phone has two fuses holes on it."},
+                {"fuses": "Well, a fuse is an electrical safety device that operates to provide overcurrent protection of an electrical circuit. of course, I learned this from wiki. But the one you see is not the a fake one. We just use it for a demo. You may find the real one in the lab."},
+                {"house": "Ok, if there are four holes in it, it is house. You can also call it as a bottom cover. It is a pair with top cover. In general, FESTO CP Module will drill holes in it and PCB will be put on the bottom."},
+                {"cover": "Well, if there are no holes in it, it is top cover. It looks similar to the house because they are a pair. You need to put it on the house after PCB and fuses assembly processes completed."},
+                {"lab": "The task of the factory of Smart Lab is to complete one main production task: Assembly of customized “smartphones” in a cyber physical, Industry 4.0 inspired facility using an industrial robotic manipulator. For more information you can visit our lab homepage."},
+                {"process": "Well, there are 8 steps in total. Bottom cover dispenser, Drilling, PCB assembly, Fuse dispenser, Fuses quality control, Top cover dispenser, and Manual pick up, assembly and repair. but we only select 4 processes for with Franka robot. It is a just demonstration. You may come over to visit our lab one day to get a full tutorial."}
+            ]},
+            {"relationship": [
+                {"PCBtoFuses": "Well, there are two placholder on PCB where you need to pick up fuses and put it on."},
+                {"PCBtoHouse": "Ok, PCB should be put it on the house but remember the the head of the PCB needs to match the four holes on the house."},
+                {"HousetoCover": "Ok, you can put the house and cover together but remember the orientation."},
+                {"FusestoHouse": "Well, those two can not be put together directly. The fuses need to be put it on PCB first."},
+                {"FusestoCover": "Em, they don't match. No matter what, if you have a top Cover or a bottom cover, fuses should be attached to a PCB"},
+                {"PCBtoCover": "well, if you are holding the bottom cover in your hand, then it is ok. Just put the PCB on it. But don't put the PCB on the top cover. Assembly top cover should be the last step."}
+            ]},
+            {
+                "guide": "Sure, if you put everything back to where it belongs. Then I can help you one step by step."
+            },
+          {
+                "demo": "No problem. let me show you how to assemble a phone."
+            }
+        ]
+    }
+}

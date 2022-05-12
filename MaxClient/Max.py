@@ -105,12 +105,12 @@ class Max:
                             continue
 
                         # call franka service
-                        # if any(key in text.casefold() for key in cfg.trigger_word_franka):
-                        #     text = text.replace(str(["franka", "franca", "frankia", "frank"]), "Franka")
-                        #     update_user(cfg, text)
-                        #     update_franka(cfg, "Unknow...", "Unknow...", "Waiting...")
-                        #     call_franka(self.cfg)
-                        #     continue
+                        if any(key in text.casefold() for key in cfg.trigger_word_franka):
+                            text = text.replace(str(["franka", "franca", "frankia", "frank"]), "Franka")
+                            update_user(cfg, text)
+                            update_franka(cfg, "Unknow...", "Unknow...", "Waiting...")
+                            call_franka(self.cfg)
+                            continue
 
                         # call GPT for a small talk
                         if any(key in text.casefold() for key in cfg.trigger_word_gpt):

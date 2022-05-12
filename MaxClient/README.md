@@ -3,15 +3,15 @@
 ## Structure
 - response_template: It includes the pre-defined the responses of Max.
 - robot_control_agent:
-  - robot_service_execution: It includes the scripts of control the MiR robot. 
-    In **Mir.py** script, you will need to put your MiR robot IP to **"self.host = xxx"** and add your 
+  - robot_service_execution: It includes the scripts of control the MiR and Franka Emika robot. For example,
+    in **Mir.py** script, you will need to put your MiR robot IP to **"self.host = xxx"** and add your 
     authentication code to **"self.headers['Authorization'] = xxxx"**. 
   - robot_service_management: lists all the skills and robots currently supported by Max Server
   - call_gpt.py: It defines the API calls of GPT2 and GPT3. To use GPT3 API, you need to
     apply OpenAI API keys and set it up in the **"configure.py"**. Add your API key to
     **"self.api_key ="**
   - call_other_service.py: it includes the scripts to start the chit-chat. The trained LSTM model is 
-    leveraged. If the user's intent does not fall into the MiR services or chit-chat, it will check if
+    leveraged. If the user's intent does not fall into the MiR services, Franka services or chit-chat, it will check if
     user requests service which is defined in Max Server while not synchronized on the Max Client.
   - static and templates: It includes the scripts (e.g., js, html, css) which define the Max web interface.
 - configure.py: It defines the parameters for running the Max Client, e.g., project path, trigger words.
@@ -61,6 +61,9 @@ To invoke the Max service, you need to say the trigger word - "Max", for example
 
 To invoke the MiR service, you need to say the trigger word - "mobile robot", for example,
 "Hey Max, please call mobile robot". 
+
+To invoke the Franka service, you need to say the trigger word - "Franka robot", for example,
+"Hey Max, please call Franka robot".
 
 To invoke the LSTM supported chit-chat service, you may ask question, e.g., "Max, how old are you"
 
