@@ -27,7 +27,7 @@ ground verbal commands to robot’s actions and generate the corresponding
 response; 3) the robotic platform. The following figure shows the overview of 
 the system architecture.
 
-<img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/system_architecture.png" width="800" />
+<img src="https://github.com/lcroy/Jetson_nano/blob/main/Image/architecture_new.png" width="800" />
 
 ## Structure of this repository
 ### MaxClient
