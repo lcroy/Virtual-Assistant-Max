@@ -105,7 +105,8 @@ Flask is a micro web framework written in Python.
 ```
 pip install flask
 ```
-Install Speech Recognition packages. Since the arm64 architecture does not suppor azure-cognitiveservices-speech,
+Install Speech Recognition packages. The Max Client uses the Microsoft Cognitive Speech Service as voice interface. 
+If you are running the Max Client on arm64 architecture which does not suppor Microsoft azure-cognitiveservices-speech,
 you may choose the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) instead.
 ```
 pip install SpeechRecognition
