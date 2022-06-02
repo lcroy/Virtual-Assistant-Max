@@ -1,30 +1,63 @@
 import os
 import random
 import playsound
+from pygame import *
 
-from franka_web_API import franka_open_brakes, franka_execute_task
-from Max_speak import *
-from FrankaMax import FrankaMax
-from update_conversation import *
-from configure import Config
-# from google_stt import *
+from FrankaWebAPI import franka_open_brakes, franka_execute_task
+from MaxClient.robot_control_agent.robot_service_execution.Franka import Franka
+from MaxClient.update_conversation import *
+from MaxClient.configure import Config
 from response.response_template import *
 from knowledgegraph.keywords import *
 
-def franka_service(cfg, Franka):
+def call_franka(max, cfg, requested_service):
+
+    # Frank service starts now...
+    update_max(go_franka[0])
+    playsound.playsound(os.path.join(cfg.voice_path, 'call_franka.mp3'))
+
+    # calling franka service =========================================================================
+    # connect to franka robot
+    conn_flag = con_franka(cfg)
+
+    # for testing
+    # conn_flag = True
+    if conn_flag == True:
+        franka = Franka()
+        # calling Franka service
+        update_service('franka')
+        update_max(franka_ready[0])
+        playsound.playsound(os.path.join(cfg.voice_path, 'franka_ready.mp3'))
+        # calling Franka service
+        franka_service(max, cfg, franka)
+    else:
+        update_max(no_conn[0])
+        playsound.playsound(os.path.join(cfg.voice_path, "lost_connection.mp3"))
+
+def con_franka(cfg):
+
+    try:
+        franka_open_brakes(cfg.Franka_host, cfg.LOGIN, cfg.PASSWORD)
+        update_franka("Connected to Franka", "good", "Waiting...")
+        flag = True
+    except:
+        update_franka("Not connected...", "good", "Waiting...")
+        flag = False
+
+    return flag
+
+
+
+def franka_service(max, cfg, Franka):
 
     update_franka("Connected...", "good", "Waiting...")
 
     while True:
 
-        text = speech_to_text()
-
+        text = max.speech_to_text()
         tap_suggestion = 0
-
         if len(text) > 0:
-
             no_answer = 0
-
             update_user(text)
 
             # back to Max home service
@@ -84,7 +117,7 @@ def franka_service(cfg, Franka):
                         playsound.playsound(os.path.join(cfg.voice_path, 'diy_fuse_two.mp3'))
                         no_answer = 1
                 if task_name != 'none':
-                    franka_execute_task(cfg.HOSTNAME, cfg.LOGIN, cfg.PASSWORD, task_name)
+                    franka_execute_task(cfg.Franka_host, cfg.LOGIN, cfg.PASSWORD, task_name)
                     if (tap_suggestion == 0):
                         update_max(move_home_two[0])
                         playsound.playsound(os.path.join(cfg.voice_path, 'gripper.mp3'))
@@ -111,7 +144,7 @@ def franka_service(cfg, Franka):
                 update_franka("Connected to Franka", "Good.", "Task Reasoning - PCB and ?")
                 playsound.playsound(os.path.join(cfg.voice_path, 'confirm_cover.mp3'))
                 while True:
-                    text = speech_to_text()
+                    text = max.speech_to_text()
                     if len(text) > 0:
                         if "top" in text:
                             update_max(PCBtoCover)
@@ -140,7 +173,7 @@ def franka_service(cfg, Franka):
                 update_franka("Connected to Franka", "Good.", "Task Reasoning - PCB and ?")
                 playsound.playsound(os.path.join(cfg.voice_path, 'confirm_cover.mp3'))
                 while True:
-                    text = speech_to_text()
+                    text = max.speech_to_text()
                     if len(text) > 0:
                         if "top" in text:
                             update_max(PCBtoCover)
@@ -170,7 +203,7 @@ def franka_service(cfg, Franka):
                 update_franka("Connected to Franka", "Good.", "Task Reasoning - Fuse and ?")
                 playsound.playsound(os.path.join(cfg.voice_path, 'confirm_cover.mp3'))
                 while True:
-                    text = speech_to_text()
+                    text = max.speech_to_text()
                     if len(text) > 0:
                         if "top" in text:
                             update_max(PCBtoCover)
@@ -199,7 +232,7 @@ def franka_service(cfg, Franka):
                 update_franka("Connected to Franka", "Good.", "Task Reasoning - Fuse and ?")
                 playsound.playsound(os.path.join(cfg.voice_path, 'confirm_cover.mp3'))
                 while True:
-                    text = speech_to_text()
+                    text = max.speech_to_text()
                     if len(text) > 0:
                         if "top" in text:
                             update_max(PCBtoCover)
@@ -297,7 +330,7 @@ def franka_service(cfg, Franka):
             # back to original position
             if any(key in text for key in default_position_list) and any(key in text for key in action_default_position):
                 task_name = '_move_home'
-                franka_execute_task(cfg.HOSTNAME, cfg.LOGIN, cfg.PASSWORD, task_name)
+                franka_execute_task(cfg.Franka_host, cfg.LOGIN, cfg.PASSWORD, task_name)
                 update_max(move_home[0])
                 update_franka("Connected to Franka", "Good.", "Move - Default position")
                 playsound.playsound(os.path.join(cfg.voice_path, 'home.mp3'))
@@ -309,69 +342,3 @@ def franka_service(cfg, Franka):
                 update_franka("Connected...", "good", "Waiting...")
                 # playsound.playsound(os.path.join(cfg.voice_path, "noanswer.mp3"))
                 continue
-
-def Max_Home(cfg):
-
-    # initial interface
-    update_service('home')
-    update_user("...")
-    update_max("waitting for user's command...")
-
-    while True:
-    # time.sleep(10)
-    # update_max("Hello, this is Max. How can I help you?")
-    # playsound.playsound(os.path.join(cfg.voice_path, 'hello.mp3'))
-        text = speech_to_text()
-        if len(text) > 0:
-            key = [key in text for key in service_franka]
-            if (len(key) and (True in key)):
-                text = text.replace(service_franka[key.index(True)], 'franka')
-            update_user(text)
-
-            if any(key in text for key in service_franka):
-                update_max(go_franka[0])
-                playsound.playsound(os.path.join(cfg.voice_path, 'call_franka.mp3'))
-
-                # calling franka service =========================================================================
-                # connect to franka robot
-                conn_flag = con_franka(cfg)
-
-                # for testing
-                # conn_flag = True
-
-                if conn_flag == True:
-                    franka = FrankaMax()
-                    # calling Franka service
-                    update_service('franka')
-                    update_max(franka_ready[0])
-                    playsound.playsound(os.path.join(cfg.voice_path, 'franka_ready.mp3'))
-                    # calling Franka service
-                    franka_service(cfg, franka)
-                else:
-                    update_max(no_conn[0])
-                    playsound.playsound(os.path.join(cfg.voice_path, "lost_connection.mp3"))
-                continue
-        # else:
-        #     update_user("...")
-        #     update_max("Waiting operator's command...")
-
-def con_franka(cfg):
-
-    try:
-        franka_open_brakes(cfg.HOSTNAME, cfg.LOGIN, cfg.PASSWORD)
-        update_franka("Connected to Franka", "good", "Waiting...")
-        flag = True
-    except:
-        update_franka("Not connected...", "good", "Waiting...")
-        flag = False
-
-    return flag
-
-
-if __name__ == "__main__":
-
-    cfg = Config()
-
-    # calling Max service
-    Max_Home(cfg)
-

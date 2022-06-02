@@ -109,7 +109,7 @@ class Max:
                             text = text.replace(str(["franka", "franca", "frankia", "frank"]), "Franka")
                             update_user(cfg, text)
                             update_franka(cfg, "Unknow...", "Unknow...", "Waiting...")
-                            call_franka(self.cfg)
+                            call_franka(self, cfg, 'franka')
                             continue
 
                         # call GPT for a small talk

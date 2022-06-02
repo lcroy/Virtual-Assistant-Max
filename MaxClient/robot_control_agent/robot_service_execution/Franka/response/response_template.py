@@ -1,5 +1,5 @@
 import json
-from configure import Config
+from MaxClient.configure import Config
 
 # Max response
 do_not_understand = ["Sorry, I don't understand the question. If you have any question regarding the phone assembly, I can help you with that."]

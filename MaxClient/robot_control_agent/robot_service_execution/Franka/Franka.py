@@ -1,23 +1,20 @@
 from FrankaWebAPI import franka_open_brakes, franka_close_brakes, franka_execute_task, franka_stop_task
 from time import sleep
 import playsound
-from configure import Config
+from MaxClient.configure import Config
 import os
-from update_conversation import *
-import time
+from MaxClient.update_conversation import *
 
-cfg =Config()
-
-class FrankaMax():
+class Franka():
     """Interface between robot assistant Max and Franka Emika robot.
     """
-    FETCH_OBJECTS = ['bottom_cover', 'pcb', 'fuse_one', 'fuse_two', 'top_cover']
-
-    def __init__(self, hostname='172.27.23.65', login='Panda', password='panda1234'):
+    def __init__(self):
         # Credentials to connect to Franka Web interface.
-        self.HOSTNAME = hostname
-        self.LOGIN = login
-        self.PASSWORD = password
+        self.cfg = Config()
+        self.FETCH_OBJECTS = ['bottom_cover', 'pcb', 'fuse_one', 'fuse_two', 'top_cover']
+        self.HOSTNAME = self.cfg.Franka_host
+        self.LOGIN = self.cfg.LOGIN
+        self.PASSWORD = self.cfg.PASSWORD
 
     def DoAction(self, intent):
         err_str0 = 'Argument "intent" must be a dictionary, see class "Intents" in intent_genetator.py'
@@ -121,28 +118,28 @@ class FrankaMax():
         sleep(5)
         self.fetch_one_object(self.FETCH_OBJECTS[0], color)
         update_max("Ok, hold the house first.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'house_one.mp3'))
-        playsound.playsound(os.path.join(cfg.voice_path, 'gripper.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'house_one.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'gripper.mp3'))
         sleep(20)
         self.fetch_one_object(self.FETCH_OBJECTS[1], color)
         update_max("PCB is coming...Please put it on the house and check the orientation.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'PCB_two.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'PCB_two.mp3'))
         sleep(30)
         self.fetch_one_object(self.FETCH_OBJECTS[2], color)
         update_max("Now! let's get fuses placed. Here is the first one.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'fuse_three.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'fuse_three.mp3'))
         sleep(25)
         self.fetch_one_object(self.FETCH_OBJECTS[3], color)
         update_max("And I am bring the second one now.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'fuse_four.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'fuse_four.mp3'))
         sleep(25)
         self.fetch_one_object(self.FETCH_OBJECTS[4], color)
         update_max("Ok, we are almost done. let me bring the last part to you, the cover.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'cover_five.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'cover_five.mp3'))
         sleep(4)
         print('Fetching sequence has been finished.')
         update_max("Well done, now you have learned the process of assembly a phone.")
-        playsound.playsound(os.path.join(cfg.voice_path, 'demo_done.mp3'))
+        playsound.playsound(os.path.join(self.cfg.voice_path, 'demo_done.mp3'))
 
         # NOTE: this function is written only for 1 color objects. (blue)
     def auto_assemble_body(self):

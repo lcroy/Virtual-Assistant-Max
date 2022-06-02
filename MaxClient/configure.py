@@ -32,6 +32,12 @@ class Config:
         self.main_intent_predictor_path = os.path.join(self.predictor_path, 'main_intent')
         # self.swarm_json = os.path.join(self.dataset_path, 'swarm/polybottest-firebase-key.json')
 
+        # franka------------------------------------------------------------------------------------
+        self.voice_path = os.path.join(self.project_path, 'robot_control_agent/robot_service_execution/Franka/response')
+        self.Franka_host = '172.27.23.65'
+        self.LOGIN = 'Panda'
+        self.PASSWORD = 'panda1234'
+
         # services
         self.service_list = os.path.join(self.project_path, 'services/service_list.json')
         self.required_slot = os.path.join(self.project_path, 'services/language_service/state_tracker/required_slot.json')
@@ -44,7 +50,6 @@ class Config:
 
         # text to speech
         self.voice_id = 'Matthew'
-        self.voice_path = os.path.join(self.project_path, 'voice_audio/')
 
         # conversation json file
         self.conv_json = os.path.join(self.project_path, 'static/data/conv.json')
